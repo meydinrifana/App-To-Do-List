@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applikasi To Do List</title>
+  <link rel="stylesheet" href="style.css" />
+  
+
+</head>
+<body>
+  <div class="mey">
+    <h2> To Do List</h2>
+
+    <form id="todoForm">
+      <input type="text" id="taskInput" placeholder="Tambah tugas baru..." required />
+      <button type="submit">+</button>
+    </form>
+
+    <form id="searchForm" onsubmit="return false;">
+      <input type="text" id="searchInput" placeholder="Cari tugas..." autocomplete="off" />
+    </form>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
