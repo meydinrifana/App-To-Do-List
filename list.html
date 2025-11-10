@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applikasi To Do List</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Bitcount+Prop+Single+Ink:wght@100..900&family=Dancing+Script:wght@400..700&display=swap');
+
+/* Reset dasar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+margin: 0;
+  height: 100vh;
+  background: linear-gradient(-45deg, #c6a9d8, #FF99A0, #c6a9d8, #FF99A0);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 40px 20px;
+  color: #333;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.mey {
+  background-color: #fff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.61);
+  width: 100%;
+  max-width: 700px;
+  font-family: 'Bitcount Single Ink', cursive, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  color: #4c4c4c;
+  font-size: 2.4rem;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #c6a9d8;
+  outline: none;
+}
+
+button[type="submit"] {
+  padding: 14px 22px;
+  background-color: #fabcc0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #dba2a7;
+}
+
+/* Styling form cari */
+#searchForm {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #c6a9d8;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+   font-family: 'Segoe UI', sans-serif;
+}
+
+li {
+  background-color: #dbbbdb;
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 18px;
+}
+
+li:hover {
+  background-color: #b49ab6;
+  transform: scale(1.01);
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #e53e3e;
+  transition: color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  color: #c53030;
+}
+
+.btn-edit {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #3182ce;
+  margin-right: 14px;
+  transition: color 0.3s ease;
+}
+
+.btn-edit:hover {
+  color: #2b6cb0;
+}
+
+/* Highlight kata pencarian */
+mark {
+  background-color: #eebac3;
+  color: #000000;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+.task-date {
+  font-size: 15px;
+  color: #555;
+  margin-left: 20px;
+  margin-right: 25px;
+  font-style: italic;
+  padding: 4px 10px;
+  user-select: none;
+}
+
+/* Cegah teks panjang keluar container */
+li > span {
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  input[type="text"],
+  #searchInput {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+
+  .task-date {
+    margin: 8px 0;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    font-size: 18px;
+    margin: 5px 8px 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    margin-top: 10px;
+  }
+
+  .task-date {
+    font-size: 14px;
+  }
+}
+  </style>
+
+</head>
+<body>
+  <div class="mey">
+    <h2> To Do List</h2>
+
+    <form id="todoForm">
+      <input type="text" id="taskInput" placeholder="Tambah tugas baru..." required />
+      <button type="submit">+</button>
+    </form>
+
+    <form id="searchForm" onsubmit="return false;">
+      <input type="text" id="searchInput" placeholder="Cari tugas..." autocomplete="off" />
+    </form>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
